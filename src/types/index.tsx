@@ -1,3 +1,5 @@
+export type Image = {id:number, src:string, caption: string}
+
 export type SearchResponse = Response[]
 
 export interface Response {
