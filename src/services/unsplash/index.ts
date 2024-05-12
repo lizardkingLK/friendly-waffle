@@ -2,7 +2,7 @@ const baseUrl = "https://api.unsplash.com", accessKey = 'PbD7wF0l9taVezo03ZOl_yO
 
 const buildRequest = async (query:string = "", url:string = search) => await fetch(`${url}${query}`);
 
-export const searchImages = async (keyword:string, page:number = 1,perPage:number = 1, orderBy:string = 'relevant') => {
+export const searchImages = async (keyword:string, page:number = 1,perPage:number = 100, orderBy:string = 'relevant') => {
     if (!keyword || !accessKey) {
         return;
     }

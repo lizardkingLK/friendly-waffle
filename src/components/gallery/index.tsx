@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react"
-import { searchImages } from "../../services/unsplash"
-import { SearchResponse } from "../../types";
+
+const imageCDN = 'https://friendlywaffle.netlify.app/.netlify/images?url=/';
 
 const Gallery = () => {
-    const [images,setImages] = useState<SearchResponse>([]);
-
-    const loadImages = async (pageNo:number = 1) => await searchImages('trees', pageNo);
+    const [images, setImages] = useState<{id: number, src:string, caption:string}[]>([]);
 
     useEffect(() => {
-        loadImages().then((images) => {
-            if (!images?.results || !(images.results satisfies SearchResponse)) {
-                return;
-            }
-            setImages(images.results);
-        })
+        setImages(
+            Array(10).fill(1).map((_, i) => ({
+                id:i+1,
+                src: `${imageCDN}assets/images/gallery (${i+1}).jpg`,
+                caption: `image${i+1}`,
+            }))
+        )        
     }, [])
     
   return (
     <div>
         <h1 className="text-black font-bold text-lg">Gallery</h1>
         <div>
-            {images.map((image) => <div key={image.id}><img src={image.urls.raw} alt={image.alt_description} /></div>)}
+            {images.map((image) => <div key={image.id}><img src={`${image.src}`} alt={image.caption} /></div>)}
         </div>
     </div>
   )
