@@ -9,7 +9,7 @@ const Gallery = () => {
         setImages(
             Array(10).fill(1).map((_, i) => ({
                 id:i+1,
-                src: `${imageCDN}assets/images/gallery (${i+1}).jpg`,
+                src: `${imageCDN}assets/images/gallery${i+1}.jpg`,
                 caption: `image${i+1}`,
             }))
         )        
